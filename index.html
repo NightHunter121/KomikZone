@@ -10,7 +10,7 @@
 
     <header class="header">
         <div class="logo">
-            <a href="index.html">Shinigami Comics</a>
+            <a href="#" onclick="showPage('home')">Shinigami Comics</a>
         </div>
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Cari komik...">
@@ -18,31 +18,55 @@
         </div>
     </header>
 
-    <main class="main-content">
-        <h2 class="section-title">Komik Terbaru</h2>
-        <div class="komik-list">
-            <a href="komik-1/index.html" class="komik-item">
-                <img src="images/sampul-komik-1.jpg" alt="Sampul Komik Satu">
-                <div class="komik-info">
-                    <h3>Judul Komik Satu</h3>
-                    <p class="chapter-info">Chapter 123</p>
-                </div>
-            </a>
-            
-            <a href="komik-2/index.html" class="komik-item">
-                <img src="images/sampul-komik-2.jpg" alt="Sampul Komik Dua">
-                <div class="komik-info">
-                    <h3>Judul Komik Dua</h3>
-                    <p class="chapter-info">Chapter 45</p>
-                </div>
-            </a>
-            
+    <div id="home-page" class="page active">
+        <main class="main-content">
+            <h2 class="section-title">Komik Terbaru</h2>
+            <div class="komik-list">
+                <a href="#" onclick="showDetailPage('komik-1')" class="komik-item">
+                    <img src="images/sampul-komik-1.jpg" alt="Sampul Komik Satu">
+                    <div class="komik-info">
+                        <h3>Judul Komik Satu</h3>
+                        <p class="chapter-info">Chapter 123</p>
+                    </div>
+                </a>
+                
+                <a href="#" onclick="showDetailPage('komik-2')" class="komik-item">
+                    <img src="images/sampul-komik-2.jpg" alt="Sampul Komik Dua">
+                    <div class="komik-info">
+                        <h3>Judul Komik Dua</h3>
+                        <p class="chapter-info">Chapter 45</p>
+                    </div>
+                </a>
             </div>
-    </main>
+        </main>
+    </div>
+
+    <div id="detail-page" class="page">
+        <main class="main-content">
+            <button onclick="showPage('home')" class="back-button">Kembali ke Beranda</button>
+            <div id="detail-content">
+                </div>
+        </main>
+    </div>
+
+    <div id="reader-page" class="page">
+        <header class="reader-header">
+            <a href="#" onclick="showPage('detail')" class="back-link">Kembali</a>
+            <h1 id="chapterTitle"></h1>
+        </header>
+        <main class="reader-content">
+            <img id="comicPage" src="" alt="Halaman Komik">
+            <div class="navigation-buttons">
+                <button id="prevButton" disabled>Sebelumnya</button>
+                <button id="nextButton">Berikutnya</button>
+            </div>
+        </main>
+    </div>
 
     <footer class="footer">
         <p>&copy; 2025 Shinigami Comics. All rights reserved.</p>
     </footer>
 
+    <script src="js/script.js"></script>
 </body>
 </html>
