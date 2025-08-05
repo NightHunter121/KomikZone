@@ -122,7 +122,7 @@ a {
     border-top: 1px solid #333;
 }
 
-/* Styling Halaman Tunggal */
+/* === Styling Halaman Tunggal === */
 .page {
     display: none; /* Sembunyikan semua halaman secara default */
 }
@@ -146,4 +146,109 @@ a {
 
 .back-button:hover {
     background-color: #555;
+}
+
+/* Reader Header */
+.reader-header {
+    position: relative;
+    background-color: #1e1e1e;
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid #333;
+}
+
+.back-link {
+    position: absolute;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #f0f0f0;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #e53935;
+}
+
+.reader-content {
+    text-align: center;
+    padding: 2rem;
+}
+
+#comicPage {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #333;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    margin-bottom: 1.5rem;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.navigation-buttons button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #e53935;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.navigation-buttons button:hover:not(:disabled) {
+    background-color: #c62828;
+}
+
+.navigation-buttons button:disabled {
+    background-color: #333;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.comic-detail {
+    display: flex;
+    gap: 2rem;
+    background-color: #1e1e1e;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.comic-detail img {
+    width: 300px;
+    height: auto;
+    border-radius: 5px;
+}
+
+.comic-detail .info {
+    flex: 1;
+}
+
+.comic-detail .info h2 {
+    color: #e53935;
+    margin-top: 0;
+}
+
+.chapter-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+.chapter-list li a {
+    display: block;
+    background-color: #2a2a2a;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.chapter-list li a:hover {
+    background-color: #3d3d3d;
 }
