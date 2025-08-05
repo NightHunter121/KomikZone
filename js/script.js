@@ -26,7 +26,21 @@ const comics = {
                 ]
             }
         }
+    },
+    'komik-3': {
+        title: 'Komik Ketiga',
+        cover: 'images/sampul-komik-3.jpg',
+        chapters: {
+            'chapter-1': {
+                title: 'Chapter 1',
+                pages: [
+                    'images/komik-3/halaman-1.jpg',
+                    'images/komik-3/halaman-2.jpg'
+                ]
+            }
+        }
     }
+    // Tambahkan data komik lain di sini
 };
 
 let currentComicId = '';
@@ -39,8 +53,37 @@ function showPage(pageId) {
         page.classList.remove('active');
     });
     document.getElementById(pageId + '-page').classList.add('active');
-    // Gulirkan halaman ke atas setiap kali ganti halaman
     window.scrollTo(0, 0);
+}
+
+// Fungsi untuk menampilkan daftar komik di halaman utama
+function renderComicList(filter = '') {
+    const comicList = document.querySelector('.komik-list');
+    comicList.innerHTML = '';
+    const filteredComics = Object.keys(comics).filter(id => 
+        comics[id].title.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    if (filteredComics.length === 0) {
+        comicList.innerHTML = '<p style="text-align: center;">Komik tidak ditemukan.</p>';
+        return;
+    }
+
+    filteredComics.forEach(id => {
+        const comic = comics[id];
+        const lastChapterKey = Object.keys(comic.chapters).pop();
+        const lastChapter = comic.chapters[lastChapterKey];
+        const comicItem = `
+            <a href="#" onclick="showDetailPage('${id}')" class="komik-item">
+                <img src="${comic.cover}" alt="Sampul ${comic.title}">
+                <div class="komik-info">
+                    <h3>${comic.title}</h3>
+                    <p class="chapter-info">${lastChapter ? lastChapter.title : ''}</p>
+                </div>
+            </a>
+        `;
+        comicList.innerHTML += comicItem;
+    });
 }
 
 // Fungsi untuk menampilkan halaman detail komik
@@ -105,7 +148,14 @@ document.getElementById('nextButton').addEventListener('click', () => {
     }
 });
 
+// Event listener untuk input pencarian
+document.getElementById('searchInput').addEventListener('input', (event) => {
+    const query = event.target.value;
+    renderComicList(query);
+});
+
 // Pastikan halaman utama yang pertama kali ditampilkan
 document.addEventListener('DOMContentLoaded', () => {
+    renderComicList(); // Panggil pertama kali untuk menampilkan semua komik
     showPage('home');
 });
